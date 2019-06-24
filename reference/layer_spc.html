@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • ggspec</title>
+<title>Extract layers — layer_spc • ggspec</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,7 +30,10 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Extract layers — layer_spc" />
+
+<meta property="og:description" content="Extract necessary information from the ggplot layers object." />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -47,7 +50,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -89,84 +92,85 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Extract layers</h1>
+    
+    <div class="hidden name"><code>layer_spc.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    
+    <p>Extract necessary information from the ggplot layers object.</p>
+    
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
-
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="compare_data.html">compare_data()</a></code> </p>
-        </td>
-        <td><p>Compare layer data to plot data</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="data_int.html">data_int()</a></code> </p>
-        </td>
-        <td><p>Extract data (intermediate step)</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_layers.html">get_layers()</a></code> </p>
-        </td>
-        <td><p>Get layer information</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_mappings.html">get_mappings()</a></code> </p>
-        </td>
-        <td><p>Extract layer mapping information</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_scales.html">get_scales()</a></code> </p>
-        </td>
-        <td><p>Get scales</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ggspec.html">ggspec()</a></code> </p>
-        </td>
-        <td><p>Translate ggplot2 object into a ggspec</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="layer_spc.html">layer_spc()</a></code> </p>
-        </td>
-        <td><p>Extract layers</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="scale_spc.html">scale_spc()</a></code> </p>
-        </td>
-        <td><p>Extract scales</p></td>
-      </tr>
-    </tbody>
+    <pre class="usage"><span class='fu'>layer_spc</span>(<span class='no'>layer_plt</span>, <span class='no'>int_data</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>layer_plt</th>
+      <td><p>A <code>list</code> of layers from the ggplot object.</p></td>
+    </tr>
+    <tr>
+      <th>int_data</th>
+      <td><p>An intermediate-form for the data created by <code><a href='data_int.html'>data_int()</a></code></p></td>
+    </tr>
     </table>
-  </div>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
+    <p><code>list</code> of layers each with their layer components</p>
+    
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>ggplot2</span>)
+<span class='no'>p</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>)
+<span class='no'>p</span> <span class='kw'>&lt;-</span> <span class='no'>p</span> + <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span>(<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>Petal.Width</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>Petal.Length</span>))
+<span class='no'>dat</span> <span class='kw'>&lt;-</span>  <span class='fu'><a href='data_int.html'>data_int</a></span>(<span class='no'>p</span>$<span class='no'>data</span>, <span class='no'>p</span>$<span class='no'>layers</span>)
+<span class='fu'>layer_spc</span>(<span class='no'>p</span>$<span class='no'>layers</span>, <span class='no'>dat</span>)</div><div class='output co'>#&gt; [[1]]
+#&gt; [[1]]$data
+#&gt; NULL
+#&gt; 
+#&gt; [[1]]$geom
+#&gt; [[1]]$geom$class
+#&gt; [1] "GeomPoint"
+#&gt; 
+#&gt; 
+#&gt; [[1]]$mapping
+#&gt; [[1]]$mapping$x
+#&gt; [[1]]$mapping$x$field
+#&gt; Petal.Width
+#&gt; 
+#&gt; 
+#&gt; [[1]]$mapping$y
+#&gt; [[1]]$mapping$y$field
+#&gt; Petal.Length
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; [[1]]$aes_params
+#&gt; NULL
+#&gt; 
+#&gt; [[1]]$stat
+#&gt; [[1]]$stat$class
+#&gt; [1] "StatIdentity"
+#&gt; 
+#&gt; 
+#&gt; </div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#value">Value</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
     </ul>
+
   </div>
 </div>
 
